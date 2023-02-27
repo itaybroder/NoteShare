@@ -1,0 +1,60 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="NoteShare.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="main.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Panel runat="server" ID="HomePanel">
+                <div class="jumbotron text-center bg-dark">
+                    <h1>📖Welcome to NoteShare📖</h1>
+                    <p>The best place to explore and share notebooks👨‍🎓</p>
+                   
+                </div>
+            </asp:Panel>
+
+             <asp:Panel runat="server" ID="LogedInPanel">
+                 <style>
+                     .jumbotron {
+                          padding-top: 10px !important;
+                          padding-bottom: 10px !important;
+                        }
+                 </style>
+                <div class="jumbotron text-center">
+                    <h1>📖Welcome to NoteShare📖</h1>
+                    <p>The best place to explore and share notebooks👨‍🎓</p>
+         
+                     <asp:Button Text="Log out" runat="server" CssClass="btn btn-danger" ID="LogOutButton" OnClick="LogOutButton_Click" />
+                </div>
+                 
+            </asp:Panel>
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+
+            <asp:Panel runat="server" ID="CreatePanel" Visible="false">
+                <div class="jumbotron text-center bg-dark">
+                    <h1>create your own notebook</h1>
+                    <p></p>
+                </div>
+            </asp:Panel>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
