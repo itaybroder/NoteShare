@@ -56,7 +56,11 @@ namespace NoteShare.UI
                     CreateDate.Text = notebook.CreatedDate.ToString("dd/MM/yyyy");
                     NotebookTypeLabel.Text = notebook.Accessibility;
                     NotebookSubject.Text = SubjectTbl.GetSubjectByID(notebook.SubjectId).Name;
-                    NotebookSchoolLabel.Text = SchoolTbl.GetSchoolByID((int)notebook.SchoolId).Name;
+                    if(SchoolTbl.GetSchoolByID((int)notebook.SchoolId) != null)
+                    {
+                        NotebookSchoolLabel.Text = SchoolTbl.GetSchoolByID((int)notebook.SchoolId).Name;
+                    }
+                   
                     UserLinkl.Text = UserTbl.GetUserByUserId(notebook.UserId).Username;
 
 
@@ -178,7 +182,7 @@ namespace NoteShare.UI
                 EditView.Visible = true;
                 CantEditDiv.Visible = false;
                 SwitchView.Text = "Switch To Normal View";
-
+                CommentPanel.Visible = false;
             }
             else
             {
@@ -186,6 +190,7 @@ namespace NoteShare.UI
                 CantEditDiv.Visible = true;
                 SwitchView.Text = "Switch To Edit View";
                 Response.Redirect(Request.RawUrl);
+                CommentPanel.Visible = true;
             }
         }
 

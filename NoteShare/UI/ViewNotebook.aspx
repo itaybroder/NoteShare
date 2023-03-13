@@ -5,6 +5,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
+    <!-- FontAwesome Icons -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
     <style>
         .backbtn {
             margin-left: 20px;
@@ -89,11 +94,7 @@
 
     <asp:Panel ID="OnlinePanel" runat="server" Visible="false">
 
-        <!-- FontAwesome Icons -->
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-
+        
 
         <asp:Panel runat="server" ID="EditView" Visible="false">
             <center>
@@ -224,7 +225,28 @@
                 <div runat="server" id="CantEditDiv" class="notebookContent-block" style="overflow-y: scroll; height: 60vmin; width: 100vmin;">
                 </div>
             </center>
-            <style>
+  
+            <br />
+            <br />
+        </asp:Panel>
+
+
+        <!--Script-->
+    </asp:Panel>
+
+
+    <asp:Panel runat="server" ID="DocumentPanel" Visible="false">
+
+        <center>
+            <div style="display: inline-flex; gap: 100px">
+
+                <asp:Button ID="DownloadButton" runat="server" Text="Download Notebook" class="home-btn" OnClick="DownloadButton_Click" />
+            </div>
+        </center>
+        <h3>
+            <asp:Label Text="" runat="server" ID="ErrorLabel" /></h3>
+    </asp:Panel>
+              <style>
                 .comments-section {
                     position: absolute;
                     top: 55vmin;
@@ -254,8 +276,8 @@
                             <div class="panel panel-default" style="width: 250px">
                                 <div class="panel-heading" style="display: flex; justify-content: space-between">
                                     <div>
-                                        <% NoteShare.Models.UserTbl user = new NoteShare.Models.UserTbl((int)Eval("UserId")); %>
-                                        <b><%# user.Username %> </b>
+                                        
+                                        <b><%# NoteShare.Models.UserTbl.GetUserByUserId((int)Eval("UserId")).Username %> </b>
                                         <p style="padding: 0; margin: 0; font-size: 12px"><%# ((DateTime)Eval("CreatedDate")).ToString("dd/MM/yyyy") %></p>
                                     </div>
                                     <div>
@@ -284,25 +306,5 @@
 
                 </div>
             </asp:Panel>
-            <br />
-            <br />
-        </asp:Panel>
-
-
-        <!--Script-->
-    </asp:Panel>
-
-
-    <asp:Panel runat="server" ID="DocumentPanel" Visible="false">
-        <center>
-            <div style="display: inline-flex; gap: 100px">
-
-                <asp:Button ID="DownloadButton" runat="server" Text="Download Notebook" class="home-btn" OnClick="DownloadButton_Click" />
-            </div>
-        </center>
-        <h3>
-            <asp:Label Text="" runat="server" ID="ErrorLabel" /></h3>
-    </asp:Panel>
-
     <asp:Button Text="Delete Notebook" CssClass="btn btn-danger" ID="DeleteNotebookButton" OnClick="DeleteNotebookButton_Click" runat="server" />
 </asp:Content>

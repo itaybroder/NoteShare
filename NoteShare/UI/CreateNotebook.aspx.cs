@@ -73,7 +73,11 @@ namespace NoteShare.UI
             string format = FormatList.SelectedValue;
             string accessibility = accessibilityList.SelectedValue;
             string subject = SubjectsDropdownlist.SelectedValue;
-            int schoolId = int.Parse(SchoolsDropDownList.SelectedValue);
+            int schoolId = 0;
+            if (SchoolsDropDownList.SelectedValue != null && SchoolsDropDownList.SelectedValue != "")
+            {
+                schoolId = int.Parse(SchoolsDropDownList.SelectedValue);
+            }
 
             if (notebook == null)
             {
