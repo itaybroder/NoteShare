@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetAllNotebooks">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllNotebooksResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllNotebooksResult" type="tns:ArrayOfNotebookWS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfNotebookWS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NotebookWS" nillable="true" type="tns:NotebookWS" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NotebookWS">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="NotebookId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Color" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Format" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Path" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Accessibility" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SchoolId" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SubjectId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="OnlineNotebookFormat" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetNotebookById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNotebookByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNotebookByIdResult" type="tns:NotebookWS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserFromNotebook">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="notebook" type="tns:NotebookWS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserFromNotebookResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserFromNotebookResult" type="tns:UserWS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserWS">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Permission" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Birthday" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LikeNotebook">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="notebook" type="tns:NotebookWS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LikeNotebookResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UnLikeNotebook">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="notebook" type="tns:NotebookWS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnLikeNotebookResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CommentOnNotebook">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="comment" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="notebook" type="tns:NotebookWS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CommentOnNotebookResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCommentsOfNotebook">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="notebook" type="tns:NotebookWS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCommentsOfNotebookResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCommentsOfNotebookResult" type="tns:ArrayOfCommentWS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCommentWS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CommentWS" nillable="true" type="tns:CommentWS" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CommentWS">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NotebookId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CommentId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSubjectById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="subjectId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSubjectByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSubjectByIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLikeCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="notebook" type="tns:NotebookWS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLikeCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetLikeCountResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAllNotebooksSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllNotebooks" />
+  </wsdl:message>
+  <wsdl:message name="GetAllNotebooksSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllNotebooksResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNotebookByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNotebookById" />
+  </wsdl:message>
+  <wsdl:message name="GetNotebookByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNotebookByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserFromNotebookSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserFromNotebook" />
+  </wsdl:message>
+  <wsdl:message name="GetUserFromNotebookSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserFromNotebookResponse" />
+  </wsdl:message>
+  <wsdl:message name="LikeNotebookSoapIn">
+    <wsdl:part name="parameters" element="tns:LikeNotebook" />
+  </wsdl:message>
+  <wsdl:message name="LikeNotebookSoapOut">
+    <wsdl:part name="parameters" element="tns:LikeNotebookResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnLikeNotebookSoapIn">
+    <wsdl:part name="parameters" element="tns:UnLikeNotebook" />
+  </wsdl:message>
+  <wsdl:message name="UnLikeNotebookSoapOut">
+    <wsdl:part name="parameters" element="tns:UnLikeNotebookResponse" />
+  </wsdl:message>
+  <wsdl:message name="CommentOnNotebookSoapIn">
+    <wsdl:part name="parameters" element="tns:CommentOnNotebook" />
+  </wsdl:message>
+  <wsdl:message name="CommentOnNotebookSoapOut">
+    <wsdl:part name="parameters" element="tns:CommentOnNotebookResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCommentsOfNotebookSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCommentsOfNotebook" />
+  </wsdl:message>
+  <wsdl:message name="GetCommentsOfNotebookSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCommentsOfNotebookResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSubjectByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSubjectById" />
+  </wsdl:message>
+  <wsdl:message name="GetSubjectByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSubjectByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLikeCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLikeCount" />
+  </wsdl:message>
+  <wsdl:message name="GetLikeCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLikeCountResponse" />
+  </wsdl:message>
+  <wsdl:portType name="NoteShareWSSoap">
+    <wsdl:operation name="GetAllNotebooks">
+      <wsdl:input message="tns:GetAllNotebooksSoapIn" />
+      <wsdl:output message="tns:GetAllNotebooksSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotebookById">
+      <wsdl:input message="tns:GetNotebookByIdSoapIn" />
+      <wsdl:output message="tns:GetNotebookByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserFromNotebook">
+      <wsdl:input message="tns:GetUserFromNotebookSoapIn" />
+      <wsdl:output message="tns:GetUserFromNotebookSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LikeNotebook">
+      <wsdl:input message="tns:LikeNotebookSoapIn" />
+      <wsdl:output message="tns:LikeNotebookSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UnLikeNotebook">
+      <wsdl:input message="tns:UnLikeNotebookSoapIn" />
+      <wsdl:output message="tns:UnLikeNotebookSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CommentOnNotebook">
+      <wsdl:input message="tns:CommentOnNotebookSoapIn" />
+      <wsdl:output message="tns:CommentOnNotebookSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommentsOfNotebook">
+      <wsdl:input message="tns:GetCommentsOfNotebookSoapIn" />
+      <wsdl:output message="tns:GetCommentsOfNotebookSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubjectById">
+      <wsdl:input message="tns:GetSubjectByIdSoapIn" />
+      <wsdl:output message="tns:GetSubjectByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLikeCount">
+      <wsdl:input message="tns:GetLikeCountSoapIn" />
+      <wsdl:output message="tns:GetLikeCountSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NoteShareWSSoap" type="tns:NoteShareWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllNotebooks">
+      <soap:operation soapAction="http://tempuri.org/GetAllNotebooks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotebookById">
+      <soap:operation soapAction="http://tempuri.org/GetNotebookById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserFromNotebook">
+      <soap:operation soapAction="http://tempuri.org/GetUserFromNotebook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LikeNotebook">
+      <soap:operation soapAction="http://tempuri.org/LikeNotebook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnLikeNotebook">
+      <soap:operation soapAction="http://tempuri.org/UnLikeNotebook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CommentOnNotebook">
+      <soap:operation soapAction="http://tempuri.org/CommentOnNotebook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommentsOfNotebook">
+      <soap:operation soapAction="http://tempuri.org/GetCommentsOfNotebook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubjectById">
+      <soap:operation soapAction="http://tempuri.org/GetSubjectById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLikeCount">
+      <soap:operation soapAction="http://tempuri.org/GetLikeCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NoteShareWSSoap12" type="tns:NoteShareWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllNotebooks">
+      <soap12:operation soapAction="http://tempuri.org/GetAllNotebooks" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotebookById">
+      <soap12:operation soapAction="http://tempuri.org/GetNotebookById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserFromNotebook">
+      <soap12:operation soapAction="http://tempuri.org/GetUserFromNotebook" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LikeNotebook">
+      <soap12:operation soapAction="http://tempuri.org/LikeNotebook" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnLikeNotebook">
+      <soap12:operation soapAction="http://tempuri.org/UnLikeNotebook" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CommentOnNotebook">
+      <soap12:operation soapAction="http://tempuri.org/CommentOnNotebook" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommentsOfNotebook">
+      <soap12:operation soapAction="http://tempuri.org/GetCommentsOfNotebook" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubjectById">
+      <soap12:operation soapAction="http://tempuri.org/GetSubjectById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLikeCount">
+      <soap12:operation soapAction="http://tempuri.org/GetLikeCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NoteShareWS">
+    <wsdl:port name="NoteShareWSSoap" binding="tns:NoteShareWSSoap">
+      <soap:address location="https://localhost:44326/WS/NoteShareWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NoteShareWSSoap12" binding="tns:NoteShareWSSoap12">
+      <soap12:address location="https://localhost:44326/WS/NoteShareWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
